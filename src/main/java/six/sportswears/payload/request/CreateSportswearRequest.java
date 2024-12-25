@@ -31,4 +31,5 @@ public class CreateSportswearRequest {
 
     private List<String> list_of_related_sportswear_images;
 
+    private Long quantity;
 }

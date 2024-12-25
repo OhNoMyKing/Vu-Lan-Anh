@@ -87,14 +87,16 @@ public class OrdersServiceImpl implements OrdersService {
             statusList.add(4);
             statusList.add(5);
         }
-        List<Orders> ordersList = ordersRepository.findAllByUserAndOrderStatusIn(user, statusList);
-        return ResponseEntity.ok(listOrdersToListOrderResponse.toListOrderResponse(ordersList));
+        List<Orders> ordersList = ordersRepository.findByUserAndOrderStatusInOrderByOrderDateDesc(user, statusList);
+//        List<Orders> ordersList = ordersRepository.findAllByUserAndOrderStatusIn(user, statusList);
+        return ResponseEntity.ok(listOrdersToListOrderResponse.toListOrderResponse(ordersList, noPage));
+//        return ResponseEntity.ok(listOrdersToListOrderResponse.toListOrderResponse(ordersList));
     }
 
     @Override
     public ResponseEntity<ListOrderResponse> getAllOrderResponseForAdminByStatus(Integer status, Long noPage) {
-        List<Orders> ordersList = ordersRepository.findAllByOrderStatus(status);
-        ListOrderResponse listOrderResponse = listOrdersToListOrderResponse.toListOrderResponse(ordersList);
+        List<Orders> ordersList = ordersRepository.findAllByOrderStatusOrderByOrderDateDesc(status);
+        ListOrderResponse listOrderResponse = listOrdersToListOrderResponse.toListOrderResponse(ordersList, noPage);
         return ResponseEntity.ok(listOrderResponse);
 
     }

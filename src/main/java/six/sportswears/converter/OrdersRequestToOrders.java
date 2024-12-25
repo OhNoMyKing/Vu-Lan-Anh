@@ -33,7 +33,7 @@ public class OrdersRequestToOrders {
         orders.setShipping(shipping);
         orders.setPayment(payment);
 
-        orders.setOrder_date(new Date());
+        orders.setOrderDate(new Date());
         orders.setContact(ordersRequest.getFullName() + " - " + ordersRequest.getPhone());
         orders.setShipping_address(ordersRequest.getAddress());
 

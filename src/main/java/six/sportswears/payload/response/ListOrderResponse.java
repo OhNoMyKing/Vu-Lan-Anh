@@ -13,4 +13,6 @@ import java.util.List;
 @Setter
 public class ListOrderResponse {
     private List<OrdersResponse> ordersResponseList;
+    private Long currentPage;
+    private Long totalPage;
 }

@@ -34,8 +34,8 @@ import java.util.List;
         private String shipping_address;
 
         @Column(name = "order_date")
-        private Date order_date;
-
+        private Date orderDate;
+        // Duy sua orderDate
         @Column(name = "contact")
         private String contact;
 

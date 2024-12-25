@@ -14,7 +14,7 @@ import java.util.List;
 @Service
 @Transactional
 public interface UserService {
-    ResponseEntity<ListUserResponse> getALlUserForAdmin(Long noPage);
+    ResponseEntity<ListUserResponse> getALlUserForAdmin(String key, Long noPage);
     ResponseEntity<UserResponse> getProfileUser();
     ResponseEntity<MessageResponse> feedBack(List<ReviewRequest> reviewRequestList);
     ResponseEntity<MessageResponse> changeProfile(UserRequest userRequest);

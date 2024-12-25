@@ -12,13 +12,15 @@ import java.util.*;
 @Configuration
 @ConfigurationProperties(prefix = "payment.vn-pay")
 public class VNPAYConfig {
-    private String url;
-    private String returnUrl;
-    private String tmnCode;
-    private String secretKey;
-    private String version;
-    private String command;
-    private String orderType;
+    private final String url = "https://sandbox.vnpayment.vn/paymentv2/vpcpay.html";
+    private final String returnUrl = "http://localhost:8080/money/vn-pay-callback";
+    private final String tmnCode = "AD6VIAPZ";
+    private final String secretKey = "MLTEYR74L68BLYGX0HBAGA5OXKPH2HQ5";
+    private final String version = "2.1.0";
+    private final String command = "pay";
+    private final String orderType = "other";
+
+
 
     public Map<String, String> getVNPayConfig() {
         Map<String, String> vnpParamsMap = new HashMap<>();

@@ -42,14 +42,15 @@ public class UserServiceImpl implements UserService {
     PasswordEncoder encoder;
     UserRequestToUser userRequestToUser;
     @Override
-    public ResponseEntity<ListUserResponse> getALlUserForAdmin(Long noPage) {
-        List<User> userList = userRepository.findAll();
+    public ResponseEntity<ListUserResponse> getALlUserForAdmin(String key, Long noPage) {
+        List<User> userList = userRepository.findAllByUsernameContainingOrFirstNameContainingOrLastNameContaining(key, key, key);
+//        List<User> userList = userRepository.findAll();
         List<UserResponse> userResponseList = new ArrayList<>();
         for(User x : userList) {
             userResponseList.add(userToUserResponse.toUserResponse(x));
         }
 
-        Pageable pageable = PageRequest.of((int)(noPage -1L), 16);
+        Pageable pageable = PageRequest.of((int)(noPage -1L), 4);
         long start = pageable.getOffset();
         long end;
         if(start + pageable.getPageSize() > userResponseList.size()) {

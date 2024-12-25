@@ -12,9 +12,9 @@ import lombok.Setter;
 public class UserRequest {
     private Long id;
 
-    private String first_name;
+    private String firstName;
 
-    private String last_name;
+    private String lastName;
 
     private String username;
 

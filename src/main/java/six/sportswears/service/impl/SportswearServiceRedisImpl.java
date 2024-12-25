@@ -7,6 +7,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import six.sportswears.payload.request.SearchRequest;
 import six.sportswears.payload.response.ListSportswearResponse;
@@ -18,6 +19,7 @@ import six.sportswears.service.SportswearServiceRedis;
 public class SportswearServiceRedisImpl implements SportswearServiceRedis {
     private final RedisTemplate<String, Object> redisTemplate;
     private final ObjectMapper redisObjectMapper;
+    SimpMessagingTemplate messagingTemplate;
     //
     private String getKeyFrom(SearchRequest searchRequest){
         Long noPage = searchRequest.getNoPage();
@@ -44,7 +46,11 @@ public class SportswearServiceRedisImpl implements SportswearServiceRedis {
         String key = this.getKeyFrom(searchRequest);
         redisTemplate.delete(key);
     }
-
+    @Override
+    public void clear() {
+        redisTemplate.getConnectionFactory().getConnection().flushAll();
+        messagingTemplate.convertAndSend("/topic/sportswearUpdated","Product updated");
+    }
     @Override
     public void saveAllProducts(SearchRequest searchRequest, ListSportswearResponse listSportswearResponse) throws JsonProcessingException {
         String key = this.getKeyFrom(searchRequest);

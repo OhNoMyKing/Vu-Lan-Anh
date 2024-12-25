@@ -29,11 +29,12 @@ public class UserReviewToUserReviewResponse {
 
     }
     public UserReviewResponse toUserReviewResponse(UserReview userReview) {
-        UserReviewResponse userReviewResponse = modelMapper.map(userReview, UserReviewResponse.class);
-        userReviewResponse.setUserName(userReview.getUser().getFirst_name() +"_" + userReview.getUser().getLast_name());
+        UserReviewResponse userReviewResponse = new UserReviewResponse();
+        userReviewResponse.setUserName(userReview.getUser().getFirstName() +"_" + userReview.getUser().getLastName());
         userReviewResponse.setMain_image(userReview.getUser().getMain_image());
         userReviewResponse.setTime(getDaysBetween(userReview.getTimeCreated()));
         userReviewResponse.setRate(userReview.getRating_value());
+        userReviewResponse.setComment(userReview.getComment());
         return userReviewResponse;
     }
 

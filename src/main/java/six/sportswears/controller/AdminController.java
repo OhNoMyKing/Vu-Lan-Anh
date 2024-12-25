@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import six.sportswears.payload.request.*;
@@ -12,6 +13,7 @@ import six.sportswears.payload.response.*;
 import six.sportswears.service.OrdersService;
 import six.sportswears.service.SportswearService;
 import six.sportswears.service.UserService;
+import six.sportswears.service.impl.SportswearServiceImpl;
 
 import java.util.Date;
 
@@ -25,10 +27,16 @@ public class AdminController {
     SportswearService sportswearService;
     OrdersService ordersService;
     UserService userService;
+    SportswearServiceImpl sportswearServiceImpl;
+    SimpMessagingTemplate messagingTemplate;
     @PostMapping("/add-product")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> addProductByAdmin(@Valid @RequestBody CreateSportswearRequest createSportswearRequest) {
-        return sportswearService.createSportswearByAdmin(createSportswearRequest);
+        ResponseEntity<MessageResponse> response =  sportswearService.createSportswearByAdmin(createSportswearRequest);
+        ResponseEntity<SportswearResponse> sportswearUpdate = sportswearServiceImpl.getSportswearByID(createSportswearRequest.getId());
+        messagingTemplate.convertAndSend("/topic/sportswearUpdated",sportswearUpdate);
+//        messagingTemplate.convertAndSend("/topic/products","Product updated");
+        return  response;
     }
 
 //   0 @PostMapping("/update-product")
@@ -73,7 +81,7 @@ public class AdminController {
         if(searchRequest.getNoPage() == null) {
             searchRequest.setNoPage(1L);
         }
-        return userService.getALlUserForAdmin(searchRequest.getNoPage());
+        return userService.getALlUserForAdmin(searchRequest.getKey(),searchRequest.getNoPage());
     }
     @GetMapping("/test")
     @PreAuthorize("hasRole('ADMIN')")

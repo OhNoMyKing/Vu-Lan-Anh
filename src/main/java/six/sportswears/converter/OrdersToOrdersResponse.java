@@ -39,7 +39,7 @@ public class OrdersToOrdersResponse {
         ordersResponse.setOrderItemResponseList(orderItemResponseList);
         ordersResponse.setTotalOrder(amount);
         ordersResponse.setTotalQuantityOrder((long) orderItemList.size());
-        ordersResponse.setCreateDate(ConvertDate.convertDate(orders.getOrder_date()));
+        ordersResponse.setCreateDate(ConvertDate.convertDate(orders.getOrderDate()));
         ordersResponse.setReceiver(orders.getContact());
 
         return ordersResponse;

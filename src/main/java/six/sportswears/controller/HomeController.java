@@ -64,7 +64,6 @@ public class HomeController {
         if(sportswearResponseRedis == null){
             ListSportswearResponse sportswearResponse = sportswearService.getAllSportswearDisplayForCustomer(searchRequest);
             //xoa data redis cu
-            sportswearServiceRedis.clear(searchRequest);
             //cap nhat data redis moi
             try{
                 sportswearServiceRedis.saveAllProducts(searchRequest,sportswearResponse);
