@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long>{
+
     Optional<User> findByUsername(String username);
 
     List<User> findAllByUsernameContainingOrFirstNameContainingOrLastNameContaining(String key1, String key2, String key3);

@@ -5,7 +5,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import six.sportswears.payload.response.CouponCaculationResponse;
+import six.sportswears.payload.response.coupon.CouponCaculationResponse;
 import six.sportswears.service.impl.CouponService;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -23,8 +23,11 @@ public class CouponController {
         @RequestParam("totalAmount") double totalAmount){
         try{
             double finalAmount = couponService.caculateCouponValue(couponCode,totalAmount);
+            //getCouponId
+            Long couponId = couponService.getCouponIdByCode(couponCode);
             CouponCaculationResponse couponCaculationResponse = CouponCaculationResponse.builder()
                     .result(finalAmount)
+                    .couponId(couponId)
                     .errorMessage("")
                     .build();
             return ResponseEntity.ok(couponCaculationResponse);

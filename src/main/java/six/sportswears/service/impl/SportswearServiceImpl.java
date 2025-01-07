@@ -16,6 +16,11 @@ import six.sportswears.model.*;
 import six.sportswears.payload.request.CreateSportswearRequest;
 import six.sportswears.payload.request.SearchRequest;
 import six.sportswears.payload.response.*;
+import six.sportswears.payload.response.chatbot.SportswearResponseDetails;
+import six.sportswears.payload.response.sportswear.ListSportswearResponse;
+import six.sportswears.payload.response.sportswear.ListSportswearRevenueResponseInAMonth;
+import six.sportswears.payload.response.sportswear.SportswearResponse;
+import six.sportswears.payload.response.sportswear.SportswearRevenueResponse;
 import six.sportswears.repository.*;
 import six.sportswears.service.SportswearService;
 
@@ -44,7 +49,11 @@ public class SportswearServiceImpl implements SportswearService {
         Sportswear sportswear = createSportswearRequestToSportswear.toSportswear(createSportswearRequest);
         sportswearRepository.save(sportswear);
 
+        if(createSportswearRequest.getId() == null) {
+            createSportswearRequest.setId(sportswear.getId());
+        }
         if(createSportswearRequest.getId() != null) {
+
             List<RelatedImageSportswear> relatedImageSportswearList = relatedImageSportswearRepository.findAllBySportswear(sportswear);
             relatedImageSportswearRepository.deleteAllInBatch(relatedImageSportswearList);
         }
@@ -55,7 +64,6 @@ public class SportswearServiceImpl implements SportswearService {
                 relatedImageSportswear.setRelated_image(x);
                 relatedImageSportswear.setSportswear(sportswear);
                 relatedImageSportswearRepository.save(relatedImageSportswear);
-
             }
         }
 

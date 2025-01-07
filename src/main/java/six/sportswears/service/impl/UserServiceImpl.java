@@ -22,6 +22,8 @@ import six.sportswears.model.UserReview;
 import six.sportswears.payload.request.ReviewRequest;
 import six.sportswears.payload.request.UserRequest;
 import six.sportswears.payload.response.*;
+import six.sportswears.payload.response._user.UserResponse;
+import six.sportswears.payload.response.user.ListUserResponse;
 import six.sportswears.repository.UserRepository;
 import six.sportswears.repository.UserReviewRepository;
 import six.sportswears.security.services.UserDetailsImpl;

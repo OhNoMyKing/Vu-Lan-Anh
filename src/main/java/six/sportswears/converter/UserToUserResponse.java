@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.User;
-import six.sportswears.payload.response.UserResponse;
+import six.sportswears.payload.response._user.UserResponse;
 
 @Component
 @RequiredArgsConstructor

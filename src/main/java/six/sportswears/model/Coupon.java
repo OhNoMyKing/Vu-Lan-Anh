@@ -20,6 +20,8 @@ public class Coupon {
     private Long id;
     @Column(name="code", nullable = false, unique = true)
     private String code;
+    @Column(name="description")
+    private String description;
     @Column(name="active",nullable = false)
     private boolean active;
     @OneToMany(mappedBy = "coupon")

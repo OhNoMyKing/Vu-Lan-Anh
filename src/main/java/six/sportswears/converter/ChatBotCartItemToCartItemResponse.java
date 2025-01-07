@@ -9,7 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.CartItem;
 import six.sportswears.model.Sportswear;
-import six.sportswears.payload.response.CartItemResponse;
+import six.sportswears.payload.response.cart.CartItemResponse;
 import six.sportswears.repository.SportswearRepository;
 
 @Component

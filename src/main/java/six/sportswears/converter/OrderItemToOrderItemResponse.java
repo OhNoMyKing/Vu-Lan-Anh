@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.OrderItem;
 import six.sportswears.model.Sportswear;
-import six.sportswears.payload.response.OrderItemResponse;
+import six.sportswears.payload.response.order.OrderItemResponse;
 import six.sportswears.repository.SportswearRepository;
 
 import java.text.NumberFormat;

@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.UserReview;
-import six.sportswears.payload.response.UserReviewResponse;
+import six.sportswears.payload.response._user.UserReviewResponse;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

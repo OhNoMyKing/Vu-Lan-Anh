@@ -6,7 +6,7 @@ import lombok.experimental.FieldDefaults;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.Payment;
-import six.sportswears.payload.response.PaymentResponse;
+import six.sportswears.payload.response.vnpay.PaymentResponse;
 
 
 @Component

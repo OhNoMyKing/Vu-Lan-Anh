@@ -10,12 +10,16 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import six.sportswears.payload.request.*;
 import six.sportswears.payload.response.*;
+import six.sportswears.payload.response.sportswear.ListSportswearResponse;
+import six.sportswears.payload.response.sportswear.ListSportswearRevenueResponseInAMonth;
+import six.sportswears.payload.response.sportswear.SportswearResponse;
+import six.sportswears.payload.response.sportswear.SportswearRevenueResponse;
+import six.sportswears.payload.response.user.ListUserResponse;
 import six.sportswears.service.OrdersService;
 import six.sportswears.service.SportswearService;
+import six.sportswears.service.SportswearServiceRedis;
 import six.sportswears.service.UserService;
 import six.sportswears.service.impl.SportswearServiceImpl;
-
-import java.util.Date;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -24,6 +28,7 @@ import java.util.Date;
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class AdminController {
+    SportswearServiceRedis sportswearServiceRedis;
     SportswearService sportswearService;
     OrdersService ordersService;
     UserService userService;
@@ -32,9 +37,13 @@ public class AdminController {
     @PostMapping("/add-product")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<MessageResponse> addProductByAdmin(@Valid @RequestBody CreateSportswearRequest createSportswearRequest) {
+        if(createSportswearRequest.getQuantity() == null) {
+            createSportswearRequest.setQuantity(1L);
+        }
         ResponseEntity<MessageResponse> response =  sportswearService.createSportswearByAdmin(createSportswearRequest);
         ResponseEntity<SportswearResponse> sportswearUpdate = sportswearServiceImpl.getSportswearByID(createSportswearRequest.getId());
         messagingTemplate.convertAndSend("/topic/sportswearUpdated",sportswearUpdate);
+        sportswearServiceRedis.clear();
 //        messagingTemplate.convertAndSend("/topic/products","Product updated");
         return  response;
     }

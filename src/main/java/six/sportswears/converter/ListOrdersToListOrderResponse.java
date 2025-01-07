@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.Orders;
 import six.sportswears.payload.response.ListOrderResponse;
-import six.sportswears.payload.response.OrdersResponse;
+import six.sportswears.payload.response.order.OrdersResponse;
 
 
 import java.util.ArrayList;

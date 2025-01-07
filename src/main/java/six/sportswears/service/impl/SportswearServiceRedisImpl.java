@@ -10,7 +10,7 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 import six.sportswears.payload.request.SearchRequest;
-import six.sportswears.payload.response.ListSportswearResponse;
+import six.sportswears.payload.response.sportswear.ListSportswearResponse;
 import six.sportswears.service.SportswearServiceRedis;
 @Service
 @RequiredArgsConstructor

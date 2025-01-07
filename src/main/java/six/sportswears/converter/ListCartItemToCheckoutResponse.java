@@ -12,17 +12,15 @@ import six.sportswears.model.Cart;
 import six.sportswears.model.CartItem;
 import six.sportswears.model.Payment;
 import six.sportswears.model.Shipping;
-import six.sportswears.payload.response.CartItemResponse;
-import six.sportswears.payload.response.CheckoutResponse;
-import six.sportswears.payload.response.PaymentResponse;
+import six.sportswears.payload.response.cart.CartItemResponse;
+import six.sportswears.payload.response.checkout.CheckoutResponse;
+import six.sportswears.payload.response.vnpay.PaymentResponse;
 import six.sportswears.payload.response.ShippingResponse;
 import six.sportswears.repository.PaymentRepository;
 import six.sportswears.repository.ShippingRepository;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Component
 @RequiredArgsConstructor

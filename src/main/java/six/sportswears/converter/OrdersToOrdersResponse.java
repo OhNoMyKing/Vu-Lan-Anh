@@ -7,8 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.OrderItem;
 import six.sportswears.model.Orders;
-import six.sportswears.payload.response.OrderItemResponse;
-import six.sportswears.payload.response.OrdersResponse;
+import six.sportswears.payload.response.order.OrderItemResponse;
+import six.sportswears.payload.response.order.OrdersResponse;
 import six.sportswears.repository.ShippingRepository;
 import six.sportswears.utils.ConvertDate;
 
@@ -37,7 +37,8 @@ public class OrdersToOrdersResponse {
         ordersResponse.setShippingResponse(shippingToShippingResponse.toShippingResponse(orders.getShipping()));
 
         ordersResponse.setOrderItemResponseList(orderItemResponseList);
-        ordersResponse.setTotalOrder(amount);
+        ordersResponse.setTotalOrder(orders.getOrder_total());
+//        ordersResponse.setTotalOrder(amount);
         ordersResponse.setTotalQuantityOrder((long) orderItemList.size());
         ordersResponse.setCreateDate(ConvertDate.convertDate(orders.getOrderDate()));
         ordersResponse.setReceiver(orders.getContact());

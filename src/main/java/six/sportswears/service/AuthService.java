@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import six.sportswears.payload.request.LoginRequest;
 import six.sportswears.payload.request.RegisterRequest;
-import six.sportswears.payload.response.JwtResponse;
+import six.sportswears.payload.response.jwt.JwtResponse;
 import six.sportswears.payload.response.MessageResponse;
 
 @Service

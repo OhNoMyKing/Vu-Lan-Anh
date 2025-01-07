@@ -33,16 +33,19 @@ public class SportswearListener {
     // Lắng nghe sự kiện trước khi entity được persist vào database
     @PrePersist
     public void prePersist(Sportswear sportswear) {
+        sportswearServiceRedis.clear();
         log.info("prePersist: {}", sportswear); // Log thông tin về Sportswear trước khi persist
     }
 
     @PostPersist
     public void postPersist(Sportswear sportswear) {
         log.info("postPersist: {}", sportswear);
-        if (sportswearServiceRedis != null) {
-            SearchRequest searchRequest = createSearchRequest(sportswear);
-            sportswearServiceRedis.clear();
-        }
+        sportswearServiceRedis.clear();
+//        if (sportswearServiceRedis != null) {
+//            SearchRequest searchRequest = createSearchRequest(sportswear);
+//            sportswearServiceRedis.clear();
+//        }
+
     }
 
     @PreUpdate

@@ -7,7 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.RelatedImageSportswear;
 import six.sportswears.model.Sportswear;
-import six.sportswears.payload.response.SportswearResponse;
+import six.sportswears.payload.response.sportswear.SportswearResponse;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;

@@ -7,9 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import six.sportswears.model.Cart;
 import six.sportswears.model.CartItem;
-import six.sportswears.payload.response.CartItemResponse;
-import six.sportswears.payload.response.CartResponse;
-import six.sportswears.payload.response.ChatBotCartResponse;
+import six.sportswears.payload.response.cart.CartItemResponse;
+import six.sportswears.payload.response.chatbot.ChatBotCartResponse;
 
 import java.util.ArrayList;
 import java.util.List;

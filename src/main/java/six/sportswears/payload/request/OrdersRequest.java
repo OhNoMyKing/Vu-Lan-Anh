@@ -16,4 +16,6 @@ public class OrdersRequest {
     private String address;
     private String phone;
     private Long cartID;
+    private Long couponId;
+    private Double totalAmount;
 }

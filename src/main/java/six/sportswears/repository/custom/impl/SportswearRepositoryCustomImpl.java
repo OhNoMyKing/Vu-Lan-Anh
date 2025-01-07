@@ -7,6 +7,9 @@ import org.springframework.stereotype.Repository;
 import six.sportswears.model.Sportswear;
 import six.sportswears.payload.request.SearchRequest;
 import six.sportswears.payload.response.*;
+import six.sportswears.payload.response.sportswear.ListSportswearRevenueResponseInAMonth;
+import six.sportswears.payload.response.sportswear.SportswearRevenueResponse;
+import six.sportswears.payload.response.sportswear.SportswearRevenueResponseInAMonth;
 import six.sportswears.repository.custom.SportswearRepositoryCustom;
 import six.sportswears.utils.StringUtils;
 

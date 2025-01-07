@@ -2,35 +2,28 @@ package six.sportswears.controller;
 
 
 
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.web.bind.annotation.*;
 import six.sportswears.constant.ERole;
 import six.sportswears.model.Role;
 import six.sportswears.model.User;
 import six.sportswears.payload.request.LoginRequest;
 import six.sportswears.payload.request.RegisterRequest;
-import six.sportswears.payload.response.JwtResponse;
-import six.sportswears.payload.response.ListSportswearResponse;
+import six.sportswears.payload.response.jwt.JwtResponse;
 import six.sportswears.payload.response.MessageResponse;
 import six.sportswears.repository.RoleRepository;
 import six.sportswears.repository.UserRepository;
 import six.sportswears.security.services.UserDetailsImpl;
 import six.sportswears.service.impl.AuthServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

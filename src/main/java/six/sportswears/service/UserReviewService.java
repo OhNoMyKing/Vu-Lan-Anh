@@ -3,7 +3,7 @@ package six.sportswears.service;
 import jakarta.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import six.sportswears.payload.response.ListUserReviewResponse;
+import six.sportswears.payload.response.user.ListUserReviewResponse;
 
 @Service
 @Transactional

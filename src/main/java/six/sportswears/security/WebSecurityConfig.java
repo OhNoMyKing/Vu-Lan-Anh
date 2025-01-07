@@ -75,7 +75,7 @@ public class WebSecurityConfig {
                         .requestMatchers("/website/menu/**").permitAll()
                         .requestMatchers("/website/token/**").permitAll()
                         .requestMatchers("/website/custom/**").permitAll()
-                        .requestMatchers("/products/**").permitAll()
+                        .requestMatchers("/chatbot/**").permitAll()
                         .requestMatchers("/ws/**").permitAll()
                         .requestMatchers("/money/**").permitAll()
                         .anyRequest().authenticated());

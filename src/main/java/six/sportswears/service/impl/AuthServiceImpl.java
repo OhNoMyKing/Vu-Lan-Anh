@@ -16,7 +16,7 @@ import six.sportswears.constant.ERole;
 import six.sportswears.model.*;
 import six.sportswears.payload.request.LoginRequest;
 import six.sportswears.payload.request.RegisterRequest;
-import six.sportswears.payload.response.JwtResponse;
+import six.sportswears.payload.response.jwt.JwtResponse;
 import six.sportswears.payload.response.MessageResponse;
 import six.sportswears.repository.*;
 import six.sportswears.security.jwt.JwtUtils;
@@ -25,7 +25,6 @@ import six.sportswears.service.AuthService;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 

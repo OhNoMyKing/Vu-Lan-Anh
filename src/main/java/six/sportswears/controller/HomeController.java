@@ -6,23 +6,16 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import org.springframework.data.domain.Page;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import six.sportswears.model.UserReview;
 import six.sportswears.payload.request.IDAndNoPage;
 import six.sportswears.payload.request.SearchRequest;
-import six.sportswears.payload.request.StatusAndNoPage;
-import six.sportswears.payload.response.ListSportswearResponse;
-import six.sportswears.payload.response.ListUserReviewResponse;
-import six.sportswears.payload.response.SportswearResponse;
-import six.sportswears.payload.response.SportswearRevenueResponse;
+import six.sportswears.payload.response.sportswear.ListSportswearResponse;
+import six.sportswears.payload.response.user.ListUserReviewResponse;
+import six.sportswears.payload.response.sportswear.SportswearResponse;
 import six.sportswears.service.UserReviewService;
 import six.sportswears.service.impl.SportswearServiceImpl;
 import six.sportswears.service.impl.SportswearServiceRedisImpl;
-
-import java.util.List;
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)

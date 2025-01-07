@@ -5,8 +5,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
+import six.sportswears.converter.CouponToCouponDTO;
 import six.sportswears.model.Coupon;
 import six.sportswears.model.CouponCondition;
+import six.sportswears.payload.response.chatbot.response.CouponDTO;
 import six.sportswears.repository.CouponConditionRepository;
 import six.sportswears.repository.CouponRepository;
 import six.sportswears.service.ICouponService;
@@ -21,7 +23,7 @@ import java.util.List;
 public class CouponService implements ICouponService {
     private final CouponRepository couponRepository;
     private final CouponConditionRepository couponConditionRepository;
-
+    CouponToCouponDTO couponToCouponDTO;
     private double caculateDiscount(Coupon coupon, double totalAmount){
         List<CouponCondition> conditions = couponConditionRepository.findByCouponId(coupon.getId());
         double discount = 0.0;
@@ -46,6 +48,18 @@ public class CouponService implements ICouponService {
         }
         return  discount;
     }
+    public Long getCouponIdByCode(String couponCode){
+        Coupon coupon = couponRepository.findByCode(couponCode).orElseThrow(() -> new IllegalArgumentException("Coupon not found"));
+        return coupon.getId();
+    }
+
+    @Override
+    public List<CouponDTO> getAllCoupons() {
+        List<Coupon>  coupons = couponRepository.findAll();
+        List<CouponDTO> couponDTOs = couponToCouponDTO.toCouponDTO(coupons);
+        return couponDTOs;
+    }
+
     @Override
     public double caculateCouponValue(String couponCode, double totalAmount) {
         Coupon coupon = couponRepository.findByCode(couponCode)
@@ -57,4 +71,5 @@ public class CouponService implements ICouponService {
         double finalAmount = totalAmount - discount;
         return finalAmount;
     }
+
 }

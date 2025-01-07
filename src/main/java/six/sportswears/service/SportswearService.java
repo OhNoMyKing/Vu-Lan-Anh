@@ -7,6 +7,11 @@ import six.sportswears.model.Sportswear;
 import six.sportswears.payload.request.CreateSportswearRequest;
 import six.sportswears.payload.request.SearchRequest;
 import six.sportswears.payload.response.*;
+import six.sportswears.payload.response.chatbot.SportswearResponseDetails;
+import six.sportswears.payload.response.sportswear.ListSportswearResponse;
+import six.sportswears.payload.response.sportswear.ListSportswearRevenueResponseInAMonth;
+import six.sportswears.payload.response.sportswear.SportswearResponse;
+import six.sportswears.payload.response.sportswear.SportswearRevenueResponse;
 
 import java.util.List;
 
